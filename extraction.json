@@ -1,0 +1,15 @@
+[
+  {
+    "invoice_id": "sample_pdfs\\sample_pdf_draft.pdf",
+    "invoice_number": "INV-2025-001",
+    "invoice_date": "2025-01-10",
+    "due_date": null,
+    "seller_name": null,
+    "buyer_name": null,
+    "currency": null,
+    "net_total": 820.0,
+    "tax_amount": 180.0,
+    "gross_total": 1000.0,
+    "line_items": []
+  }
+]

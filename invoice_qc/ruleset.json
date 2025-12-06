@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "Invoice QC rules. Edit this file to change validations without touching Python code."
+  },
+  "completeness": {
+    "required_fields": [
+      "invoice_number",
+      "invoice_date",
+      "seller_name",
+      "buyer_name"
+    ]
+  },
+  "format": {
+    "currency": {
+      "type": "regex",
+      "pattern": "^[A-Z]{3}$",
+      "message": "invalid_format: currency"
+    },
+    "invoice_date": {
+      "type": "date_iso",
+      "message": "invalid_format: invoice_date"
+    }
+  },
+  "business": {
+    "totals_consistency": {
+      "type": "math",
+      "expression": "abs((net_total or 0) + (tax_amount or 0) - (gross_total or 0)) <= 1.0",
+      "message": "business_rule_failed: totals_mismatch"
+    },
+    "due_after_invoice": {
+      "type": "dates_compare",
+      "operator": ">=",
+      "left": "due_date",
+      "right": "invoice_date",
+      "message": "business_rule_failed: due_date_before_invoice_date"
+    }
+  },
+  "anomaly": {
+    "no_negative_totals": {
+      "type": "check_non_negative",
+      "fields": ["net_total", "tax_amount", "gross_total"],
+      "message": "anomaly: negative_total"
+    },
+    "suspicious_large_tax": {
+      "type": "threshold_percent",
+      "field": "tax_amount",
+      "base_field": "net_total",
+      "max_percent": 100,
+      "message": "anomaly: tax_too_large"
+    }
+  },
+  "duplicate_detection": {
+    "enabled": true,
+    "key_fields": ["invoice_number", "seller_name", "invoice_date"],
+    "message": "anomaly: possible_duplicate"
+  }
+}

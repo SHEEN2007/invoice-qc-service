@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "invoice_id": "sample_pdfs\\sample_pdf_draft.pdf",
+      "is_valid": false,
+      "errors": [
+        "missing_field: seller_name",
+        "missing_field: buyer_name"
+      ]
+    }
+  ],
+  "summary": {
+    "total_invoices": 1,
+    "valid_invoices": 0,
+    "invalid_invoices": 1,
+    "error_counts": {
+      "missing_field: seller_name": 1,
+      "missing_field: buyer_name": 1
+    }
+  }
+}
