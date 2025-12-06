@@ -259,3 +259,7 @@ I kept the architectural decisions and rule design purely based on my own judgem
   d.Line-item extraction minimal
 
 Some assumptions were made to keep the project scoped properly
+
+
+VIDEO LINK : 
+https://drive.google.com/file/d/1nRcfarJNsHCqJQtspYMnuDU543p4pIca/view?usp=drive_link
